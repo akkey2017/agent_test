@@ -80,7 +80,7 @@ export default function ComponentsTutorial() {
             </div>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`// Client Component（インタラクティブ）
 "use client";
@@ -110,7 +110,7 @@ export function Counter() {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`// components/Button.tsx
 interface ButtonProps {
