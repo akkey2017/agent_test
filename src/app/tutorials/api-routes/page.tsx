@@ -48,7 +48,7 @@ export default function APIRoutesTutorial() {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`// app/api/hello/route.ts
 export async function GET() {
@@ -81,7 +81,7 @@ export async function GET() {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`// app/api/users/route.ts
 export async function GET(request: Request) {
@@ -132,7 +132,7 @@ export async function DELETE(request: Request) {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`// app/api/search/route.ts
 export async function GET(request: Request) {
@@ -154,7 +154,7 @@ export async function GET(request: Request) {
             </pre>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`// app/api/posts/route.ts
 export async function POST(request: Request) {
@@ -197,7 +197,7 @@ export async function POST(request: Request) {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`// app/api/users/[id]/route.ts
 export async function GET(
@@ -230,7 +230,7 @@ export async function GET(
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`export async function GET() {
   return Response.json(
@@ -270,7 +270,7 @@ export async function OPTIONS() {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`export async function POST(request: Request) {
   try {

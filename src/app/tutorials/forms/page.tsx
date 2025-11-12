@@ -92,7 +92,7 @@ export default function FormsTutorial() {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`"use client";
 
@@ -140,7 +140,7 @@ export default function ContactForm() {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`const validateForm = () => {
   const errors: Record<string, string> = {};
@@ -181,7 +181,7 @@ export default function ContactForm() {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`const handleSubmit = (e: FormEvent) => {
   e.preventDefault(); // ページのリロードを防ぐ

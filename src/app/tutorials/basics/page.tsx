@@ -66,7 +66,7 @@ export default function BasicsTutorial() {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`// app/page.tsx - ルートページ (/)
 export default function Home() {
@@ -100,7 +100,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`// app/layout.tsx
 export default function RootLayout({

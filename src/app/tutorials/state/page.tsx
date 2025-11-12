@@ -74,7 +74,7 @@ export default function StateTutorial() {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`import { useState } from "react";
 
@@ -150,7 +150,7 @@ function Counter() {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`import { useEffect, useState } from "react";
 
@@ -194,7 +194,7 @@ function Clock() {
             </p>
           </div>
 
-          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-x-auto mb-4">
+          <div className="bg-zinc-900 dark:bg-zinc-950 rounded-lg p-6 overflow-auto max-h-96 mb-4">
             <pre className="text-sm text-zinc-100">
               <code>{`// ❌ 間違い：配列を直接変更
 todos.push(newTodo);
