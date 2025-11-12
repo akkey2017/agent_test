@@ -195,7 +195,7 @@ export default function RootLayout({
           <div className="space-y-4">
             <div className="p-4 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-900 rounded-lg">
               <h3 className="font-semibold text-red-900 dark:text-red-100 mb-2">
-                エラー: "Error: The default export is not a React Component"
+                エラー: &quot;Error: The default export is not a React Component&quot;
               </h3>
               <p className="text-sm text-red-800 dark:text-red-200 mb-2">
                 <strong>原因：</strong>ページコンポーネントが正しくエクスポートされていない
@@ -208,7 +208,7 @@ export default function RootLayout({
             
             <div className="p-4 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-900 rounded-lg">
               <h3 className="font-semibold text-red-900 dark:text-red-100 mb-2">
-                エラー: "404 This page could not be found"
+                エラー: &quot;404 This page could not be found&quot;
               </h3>
               <p className="text-sm text-red-800 dark:text-red-200 mb-2">
                 <strong>原因：</strong>ページファイルの名前や場所が間違っている
