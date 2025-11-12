@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import ReactPlayground from "@/components/ReactPlayground";
 
 export default function ComponentsTutorial() {
   const [isOpen, setIsOpen] = useState(false);
@@ -220,6 +221,40 @@ export function Button({ children, onClick, variant = 'primary' }: ButtonProps) 
                 </p>
               </div>
             )}
+          </div>
+
+          <div className="mt-6">
+            <ReactPlayground
+              title="試してみよう：自分だけのコンポーネントを作ろう"
+              height="350px"
+              initialCode={`export default function MyComponent() {
+  const [message, setMessage] = useState("こんにちは！");
+  const [isVisible, setIsVisible] = useState(true);
+
+  return (
+    <div className="p-4">
+      <button
+        onClick={() => setIsVisible(!isVisible)}
+        className="px-4 py-2 bg-blue-600 text-white rounded mb-4"
+      >
+        {isVisible ? "非表示" : "表示"}
+      </button>
+      
+      {isVisible && (
+        <div className="p-4 bg-blue-50 rounded">
+          <p className="mb-2">{message}</p>
+          <input
+            type="text"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className="w-full px-3 py-2 border rounded"
+          />
+        </div>
+      )}
+    </div>
+  );
+}`}
+            />
           </div>
         </section>
 
