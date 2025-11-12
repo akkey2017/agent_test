@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import ReactPlayground from "@/components/ReactPlayground";
-import CodePlayground from "@/components/CodePlayground";
 
 export default function StateTutorial() {
   const [text, setText] = useState("");

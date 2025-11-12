@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import * as React from "react";
 import CodeEditor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs";
 import "prismjs/components/prism-jsx";
 import "prismjs/themes/prism-tomorrow.css";
+import * as Babel from "@babel/standalone";
 
 interface ReactPlaygroundProps {
   initialCode: string;
@@ -27,29 +29,36 @@ export default function ReactPlayground({
     setError(null);
 
     try {
-      // Extract imports and component code
-      // This is a simplified approach - real implementation might need more sophisticated parsing
+      // Extract the component name
       const componentMatch = code.match(/export default function (\w+)/);
       if (!componentMatch) {
         throw new Error("export default function コンポーネントが見つかりません");
       }
+      const componentName = componentMatch[1];
 
-      // Transform the code to be executable
-      // Remove import statements and export
-      let executableCode = code
-        .replace(/^import.*from.*$/gm, "")
-        .replace(/export default function/, "function")
-        .trim();
+      // Remove export statement for transformation
+      const codeToTransform = code.replace(/export default function/, "function");
 
-      // Create a function that returns the component
+      // Transform JSX to JavaScript using Babel
+      const transformed = Babel.transform(codeToTransform, {
+        presets: ["react"],
+        filename: "component.jsx",
+      });
+
+      if (!transformed.code) {
+        throw new Error("コードの変換に失敗しました");
+      }
+
+      // Create the component function with React in scope
       const wrappedCode = `
-        const { useState, useEffect } = React;
-        ${executableCode}
-        return ${componentMatch[1]};
+        "use strict";
+        ${transformed.code}
+        return ${componentName};
       `;
 
-      const ComponentConstructor = new Function("React", wrappedCode);
-      const Component = ComponentConstructor({ useState, useEffect });
+      // Create component constructor with React and hooks in scope
+      const ComponentConstructor = new Function("React", "useState", "useEffect", wrappedCode);
+      const Component = ComponentConstructor(React, useState, useEffect);
 
       setPreviewComponent(() => Component);
     } catch (err) {

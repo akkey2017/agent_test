@@ -37,7 +37,7 @@ export default function CodePlayground({
     // Create a sandbox for code execution
     const logs: string[] = [];
     const customConsole = {
-      log: (...args: any[]) => {
+      log: (...args: unknown[]) => {
         logs.push(args.map((arg) => String(arg)).join(" "));
       },
     };
