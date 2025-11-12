@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import ReactPlayground from "@/components/ReactPlayground";
+import CodePlayground from "@/components/CodePlayground";
 
 export default function StateTutorial() {
   const [text, setText] = useState("");
@@ -99,6 +101,42 @@ function Counter() {
               状態を直接変更せず、必ずセッター関数を使用してください。
               これによりReactが変更を検知し、再レンダリングを実行します。
             </p>
+          </div>
+
+          <div className="mb-6">
+            <ReactPlayground
+              title="試してみよう：カウンターコンポーネント"
+              height="300px"
+              initialCode={`export default function Counter() {
+  const [count, setCount] = useState(0);
+  
+  return (
+    <div className="p-4">
+      <p className="text-xl mb-4">カウント: {count}</p>
+      <div className="flex gap-2">
+        <button 
+          onClick={() => setCount(count + 1)}
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          増やす
+        </button>
+        <button 
+          onClick={() => setCount(count - 1)}
+          className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+        >
+          減らす
+        </button>
+        <button 
+          onClick={() => setCount(0)}
+          className="px-4 py-2 bg-zinc-600 text-white rounded hover:bg-zinc-700"
+        >
+          リセット
+        </button>
+      </div>
+    </div>
+  );
+}`}
+            />
           </div>
         </section>
 
@@ -218,6 +256,62 @@ setTodos(todos.map((todo, i) =>
                 ))
               )}
             </ul>
+          </div>
+
+          <div className="mt-6">
+            <ReactPlayground
+              title="試してみよう：Todoリストを編集してみよう"
+              height="400px"
+              initialCode={`export default function TodoApp() {
+  const [text, setText] = useState("");
+  const [todos, setTodos] = useState([]);
+
+  const addTodo = () => {
+    if (text.trim()) {
+      setTodos([...todos, text]);
+      setText("");
+    }
+  };
+
+  const removeTodo = (index) => {
+    setTodos(todos.filter((_, i) => i !== index));
+  };
+
+  return (
+    <div className="p-4">
+      <div className="flex gap-2 mb-4">
+        <input
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && addTodo()}
+          placeholder="Todoを入力..."
+          className="flex-1 px-3 py-2 border rounded"
+        />
+        <button
+          onClick={addTodo}
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          追加
+        </button>
+      </div>
+      <ul className="space-y-2">
+        {todos.map((todo, index) => (
+          <li key={index} className="flex justify-between items-center p-2 bg-zinc-100 rounded">
+            <span>{todo}</span>
+            <button
+              onClick={() => removeTodo(index)}
+              className="px-2 py-1 bg-red-600 text-white text-sm rounded"
+            >
+              削除
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}`}
+            />
           </div>
         </section>
 
