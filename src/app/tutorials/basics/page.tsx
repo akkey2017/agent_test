@@ -42,15 +42,25 @@ export default function BasicsTutorial() {
           </h2>
           <div className="prose dark:prose-invert max-w-none">
             <p className="text-zinc-700 dark:text-zinc-300 mb-4">
-              Next.jsは、Reactベースのフルスタックフレームワークです。以下の特徴があります：
+              Next.jsは、Reactベースのフルスタックフレームワークです。Vercelによってメンテナンスされており、
+              多くの企業で本番環境で使用されています。以下の特徴があります：
             </p>
             <ul className="list-disc list-inside space-y-2 text-zinc-700 dark:text-zinc-300 mb-6">
-              <li>サーバーサイドレンダリング（SSR）のサポート</li>
-              <li>静的サイト生成（SSG）</li>
-              <li>ファイルベースのルーティング</li>
-              <li>APIルートの作成が簡単</li>
-              <li>優れた開発体験とパフォーマンス</li>
+              <li><strong>サーバーサイドレンダリング（SSR）</strong>：SEOに優れ、初期表示が高速</li>
+              <li><strong>静的サイト生成（SSG）</strong>：ビルド時にページを生成し、超高速な配信が可能</li>
+              <li><strong>ファイルベースのルーティング</strong>：直感的でわかりやすいルート定義</li>
+              <li><strong>APIルートの作成が簡単</strong>：バックエンドとフロントエンドを一つのプロジェクトで管理</li>
+              <li><strong>優れた開発体験</strong>：高速なHMR、TypeScriptサポート、エラー表示が充実</li>
+              <li><strong>最適化機能</strong>：画像最適化、フォント最適化、コード分割が自動で実行</li>
             </ul>
+            
+            <div className="mt-6 p-4 bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-900 rounded-lg">
+              <p className="text-sm text-green-900 dark:text-green-100">
+                <strong>💡 実務での利点：</strong>
+                Next.jsを使うと、SEO対策、パフォーマンス最適化、開発効率の向上を同時に実現できます。
+                Netflix、Uber、TikTokなど大規模サービスでも採用されています。
+              </p>
+            </div>
           </div>
         </section>
 
@@ -86,6 +96,23 @@ export default function About() {
               各ディレクトリの<code className="px-1 py-0.5 bg-blue-100 dark:bg-blue-900 rounded">page.tsx</code>
               ファイルがそのルートのページになります。
             </p>
+          </div>
+          
+          <div className="mt-6 p-4 bg-yellow-50 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-900 rounded-lg">
+            <h3 className="text-sm font-semibold mb-2 text-yellow-900 dark:text-yellow-100">
+              📁 ディレクトリ構造の例
+            </h3>
+            <pre className="text-xs text-yellow-900 dark:text-yellow-100 font-mono">
+{`app/
+├── page.tsx           → /
+├── about/
+│   └── page.tsx       → /about
+├── blog/
+│   ├── page.tsx       → /blog
+│   └── [slug]/
+│       └── page.tsx   → /blog/:slug
+└── layout.tsx         → 全ページ共通レイアウト`}
+            </pre>
           </div>
         </section>
 
@@ -136,10 +163,100 @@ export default function RootLayout({
               <li>簡単な問い合わせフォームのUIを実装</li>
               <li><code className="px-1 py-0.5 bg-green-100 dark:bg-green-900 rounded">http://localhost:3000/contact</code>で確認</li>
             </ol>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
               ヒント：<code className="px-1 py-0.5 bg-green-100 dark:bg-green-900 rounded">export default function Contact()</code>
               の形式でコンポーネントを作成します。
             </p>
+            
+            <div className="mt-4 p-3 bg-white dark:bg-green-900 rounded border border-green-300 dark:border-green-800">
+              <p className="text-sm font-semibold text-green-900 dark:text-green-100 mb-2">
+                解答例：
+              </p>
+              <pre className="text-xs text-green-900 dark:text-green-100 overflow-auto">
+{`export default function Contact() {
+  return (
+    <div className="p-8">
+      <h1 className="text-2xl font-bold mb-4">
+        お問い合わせ
+      </h1>
+      <p>お気軽にお問い合わせください。</p>
+    </div>
+  );
+}`}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4 text-zinc-900 dark:text-zinc-50">
+            ⚠️ よくあるエラーと解決方法
+          </h2>
+          <div className="space-y-4">
+            <div className="p-4 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-900 rounded-lg">
+              <h3 className="font-semibold text-red-900 dark:text-red-100 mb-2">
+                エラー: "Error: The default export is not a React Component"
+              </h3>
+              <p className="text-sm text-red-800 dark:text-red-200 mb-2">
+                <strong>原因：</strong>ページコンポーネントが正しくエクスポートされていない
+              </p>
+              <p className="text-sm text-red-800 dark:text-red-200">
+                <strong>解決：</strong><code className="px-1 py-0.5 bg-red-100 dark:bg-red-900 rounded">export default</code>
+                でReactコンポーネントをエクスポートしているか確認してください。
+              </p>
+            </div>
+            
+            <div className="p-4 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-900 rounded-lg">
+              <h3 className="font-semibold text-red-900 dark:text-red-100 mb-2">
+                エラー: "404 This page could not be found"
+              </h3>
+              <p className="text-sm text-red-800 dark:text-red-200 mb-2">
+                <strong>原因：</strong>ページファイルの名前や場所が間違っている
+              </p>
+              <p className="text-sm text-red-800 dark:text-red-200">
+                <strong>解決：</strong>ファイル名が<code className="px-1 py-0.5 bg-red-100 dark:bg-red-900 rounded">page.tsx</code>
+                になっているか、正しいディレクトリに配置されているか確認してください。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4 text-zinc-900 dark:text-zinc-50">
+            🎯 ベストプラクティス
+          </h2>
+          <div className="bg-white dark:bg-zinc-800 rounded-lg p-6 shadow-sm">
+            <ul className="space-y-3 text-zinc-700 dark:text-zinc-300">
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 dark:text-green-400">✓</span>
+                <div>
+                  <strong>命名規則を守る：</strong>
+                  ページは必ず<code className="px-1 py-0.5 bg-zinc-100 dark:bg-zinc-700 rounded">page.tsx</code>、
+                  レイアウトは<code className="px-1 py-0.5 bg-zinc-100 dark:bg-zinc-700 rounded">layout.tsx</code>という名前にする
+                </div>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 dark:text-green-400">✓</span>
+                <div>
+                  <strong>ディレクトリ構造を整理：</strong>
+                  関連するページはまとめて、わかりやすいフォルダ構造にする
+                </div>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 dark:text-green-400">✓</span>
+                <div>
+                  <strong>コンポーネントを分割：</strong>
+                  大きなページは小さなコンポーネントに分割して再利用性を高める
+                </div>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 dark:text-green-400">✓</span>
+                <div>
+                  <strong>TypeScriptを活用：</strong>
+                  型定義を使って開発時のエラーを早期発見する
+                </div>
+              </li>
+            </ul>
           </div>
         </section>
 
