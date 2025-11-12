@@ -360,6 +360,157 @@ setTodos(todos.map((todo, i) =>
               <li>useStateで秒数と実行状態を管理</li>
               <li>useEffectでカウントダウンロジックを実装</li>
             </ol>
+            
+            <div className="mt-4 p-3 bg-white dark:bg-green-900 rounded border border-green-300 dark:border-green-800">
+              <p className="text-sm font-semibold text-green-900 dark:text-green-100 mb-2">
+                ヒント：
+              </p>
+              <ul className="text-xs text-green-900 dark:text-green-100 space-y-1">
+                <li>• useState で秒数（seconds）と実行中フラグ（isRunning）を管理</li>
+                <li>• useEffect で setInterval を使ってカウントダウン</li>
+                <li>• クリーンアップ関数で clearInterval を呼び出す</li>
+                <li>• 依存配列に isRunning と seconds を含める</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4 text-zinc-900 dark:text-zinc-50">
+            ⚠️ よくある間違いと解決方法
+          </h2>
+          <div className="space-y-4">
+            <div className="p-4 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-900 rounded-lg">
+              <h3 className="font-semibold text-red-900 dark:text-red-100 mb-2">
+                間違い1: 状態を直接変更してしまう
+              </h3>
+              <div className="bg-white dark:bg-red-900 rounded p-2 mb-2">
+                <code className="text-xs text-red-800 dark:text-red-200">
+                  {`// ❌ NG: 状態を直接変更\nconst [user, setUser] = useState({ name: "太郎" });\nuser.name = "次郎"; // これは動作しない！`}
+                </code>
+              </div>
+              <div className="bg-white dark:bg-red-900 rounded p-2">
+                <code className="text-xs text-green-800 dark:text-green-200">
+                  {`// ✅ OK: 新しいオブジェクトを作成\nsetUser({ ...user, name: "次郎" });`}
+                </code>
+              </div>
+            </div>
+            
+            <div className="p-4 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-900 rounded-lg">
+              <h3 className="font-semibold text-red-900 dark:text-red-100 mb-2">
+                間違い2: useEffectの無限ループ
+              </h3>
+              <p className="text-sm text-red-800 dark:text-red-200 mb-2">
+                <strong>原因：</strong>依存配列に含めた値をuseEffect内で更新してしまう
+              </p>
+              <div className="bg-white dark:bg-red-900 rounded p-2 mb-2">
+                <code className="text-xs text-red-800 dark:text-red-200">
+                  {`// ❌ 無限ループが発生\nuseEffect(() => {\n  setCount(count + 1);\n}, [count]); // countが変わるたびに実行→countを更新→また実行...`}
+                </code>
+              </div>
+              <p className="text-sm text-red-800 dark:text-red-200">
+                <strong>解決：</strong>依存配列を適切に設定するか、関数形式の更新を使う
+              </p>
+            </div>
+
+            <div className="p-4 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-900 rounded-lg">
+              <h3 className="font-semibold text-red-900 dark:text-red-100 mb-2">
+                間違い3: クリーンアップを忘れる
+              </h3>
+              <p className="text-sm text-red-800 dark:text-red-200 mb-2">
+                <strong>問題：</strong>タイマーやイベントリスナーが残り続け、メモリリークが発生
+              </p>
+              <div className="bg-white dark:bg-red-900 rounded p-2">
+                <code className="text-xs text-green-800 dark:text-green-200">
+                  {`// ✅ クリーンアップ関数を必ず追加\nuseEffect(() => {\n  const timer = setInterval(() => {...}, 1000);\n  return () => clearInterval(timer); // クリーンアップ\n}, []);`}
+                </code>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4 text-zinc-900 dark:text-zinc-50">
+            🎯 ベストプラクティス
+          </h2>
+          <div className="bg-white dark:bg-zinc-800 rounded-lg p-6 shadow-sm">
+            <ul className="space-y-3 text-zinc-700 dark:text-zinc-300">
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 dark:text-green-400">✓</span>
+                <div>
+                  <strong>単一責任の原則：</strong>
+                  一つのuseStateは一つの関連する値のみを管理する。複雑な状態はuseReducerを検討。
+                </div>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 dark:text-green-400">✓</span>
+                <div>
+                  <strong>依存配列を正確に：</strong>
+                  useEffect内で使用する全ての変数を依存配列に含める。ESLintの警告に従う。
+                </div>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 dark:text-green-400">✓</span>
+                <div>
+                  <strong>イミュータブルな更新：</strong>
+                  配列やオブジェクトは必ずスプレッド演算子で新しいものを作成して更新。
+                </div>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 dark:text-green-400">✓</span>
+                <div>
+                  <strong>パフォーマンスを意識：</strong>
+                  不要な再レンダリングを避けるため、useCallback、useMemoを適切に使う。
+                </div>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 dark:text-green-400">✓</span>
+                <div>
+                  <strong>カスタムフックで再利用：</strong>
+                  共通の状態ロジックはカスタムフックに抽出して再利用性を高める。
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4 text-zinc-900 dark:text-zinc-50">
+            💡 実務での活用例
+          </h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="p-4 bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-900 rounded-lg">
+              <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
+                フォーム入力の管理
+              </h3>
+              <p className="text-sm text-blue-800 dark:text-blue-200">
+                useStateで入力値を管理し、useEffectでバリデーションやAPIリクエストを実行
+              </p>
+            </div>
+            <div className="p-4 bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-900 rounded-lg">
+              <h3 className="font-semibold text-green-900 dark:text-green-100 mb-2">
+                データの取得と表示
+              </h3>
+              <p className="text-sm text-green-800 dark:text-green-200">
+                useEffectでAPIからデータを取得し、useStateで取得したデータやローディング状態を管理
+              </p>
+            </div>
+            <div className="p-4 bg-purple-50 dark:bg-purple-950 border border-purple-200 dark:border-purple-900 rounded-lg">
+              <h3 className="font-semibold text-purple-900 dark:text-purple-100 mb-2">
+                モーダルの表示制御
+              </h3>
+              <p className="text-sm text-purple-800 dark:text-purple-200">
+                useStateでモーダルの開閉状態を管理し、useEffectでボディのスクロールを制御
+              </p>
+            </div>
+            <div className="p-4 bg-orange-50 dark:bg-orange-950 border border-orange-200 dark:border-orange-900 rounded-lg">
+              <h3 className="font-semibold text-orange-900 dark:text-orange-100 mb-2">
+                リアルタイム更新
+              </h3>
+              <p className="text-sm text-orange-800 dark:text-orange-200">
+                useEffectでWebSocketに接続し、useStateで受信したメッセージを管理
+              </p>
+            </div>
           </div>
         </section>
 
