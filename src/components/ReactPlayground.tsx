@@ -109,7 +109,7 @@ export default function ReactPlayground({
               コード
             </span>
           </div>
-          <div style={{ height }}>
+          <div style={{ height, overflow: 'auto' }}>
             <CodeEditor
               value={code}
               onValueChange={setCode}
@@ -121,7 +121,6 @@ export default function ReactPlayground({
                 backgroundColor: '#1e1e1e',
                 color: '#d4d4d4',
                 minHeight: height,
-                overflow: 'auto',
               }}
               textareaClassName="focus:outline-none"
             />
