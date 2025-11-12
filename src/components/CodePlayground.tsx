@@ -90,7 +90,7 @@ export default function CodePlayground({
         </div>
       </div>
 
-      <div className="border-b border-zinc-200 dark:border-zinc-700" style={{ height }}>
+      <div className="border-b border-zinc-200 dark:border-zinc-700" style={{ height, overflow: 'auto' }}>
         <CodeEditor
           value={code}
           onValueChange={setCode}
@@ -102,7 +102,6 @@ export default function CodePlayground({
             backgroundColor: '#1e1e1e',
             color: '#d4d4d4',
             minHeight: height,
-            overflow: 'auto',
           }}
           textareaClassName="focus:outline-none"
         />
